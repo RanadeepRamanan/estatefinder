@@ -1,0 +1,23 @@
+{% extends 'paying.html' %}
+{% block content %}
+<br><br>
+<div class='col-5 mx-auto'>
+    <div class='card'>
+        <div class='card-body'>
+                
+            <h4 class='card-title'> Update PG Details</h4>
+            
+            <form method='POST' action="/update/{{id}}/" id='updation'>
+                {% csrf_token %}
+                {{updation}}
+                <input type='submit' class='btn btn-info' value='Update'>
+               
+            </form>
+        </div>
+    </div>
+    
+    
+       
+</div>
+
+{% endblock %}

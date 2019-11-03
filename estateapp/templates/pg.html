@@ -1,0 +1,93 @@
+{% extends 'paying.html' %}
+{% block content %}
+        <div class='container'>
+            <div class='col-md-3 offset-md-3'>
+                <br>
+				<h3>POST NEW PG</h3>
+				<br>
+				<form method='POST' action='/pg/'>
+					{% csrf_token %}
+					<div class='card' style='width:200%;'>
+							<div class='card-body'>
+								<h4 class='card-title'>Personal Details</h4>
+									<div class='card-text'>
+										
+										
+										<label>Mobile</label>
+										<p>{{form.mobile}}</p>
+									</div>
+							</div>
+						</div>
+						<br>
+						<div class='card' style='width:200%;'>
+							<div class='card-body'>
+								<h4 class='card-title'>Property Location</h4>
+									<div class='card-text'>
+										<label>City</label>
+										<p>{{form.city}}</p>
+										<label>Locality</label>
+										<p>{{form.location}}</p>
+										
+									</div>
+							</div>
+						</div>
+						<br>
+						<div class='card' style='width:200%;'>
+							<div class='card-body'>
+								<h4 class='card-title'>Property Features</h4>
+									<div class='card-text'>
+										<label>Available For</label>
+										<p>{{form.available}}</p>
+										<br>
+										<label>Accomdation</label>
+										<p>{{form.occupancy}}</p>
+										<label>Attached Balcony</label>
+										<p>{{form.balcony}}</p>
+										<label>Car Parking</label>
+										<p>{{form.parking}}</p>
+										
+									</div>
+							</div>
+						</div>
+						<br><br>
+						<div class='card' style='width:200%;'>
+								<div class='card-body'>
+									<h4 class='card-title'>Meals </h4>
+										<div class='card-text'>
+											
+											<p>{{form.food}}</p>
+											
+										</div>
+								</div>
+						</div>
+						<br><br>
+						<div class='card' style='width:200%;'>
+								<div class='card-body'>
+									<h4 class='card-title'>Furnishing Details</h4>
+										<div class='card-text'>
+											
+											<p>{{form.details}}</p>
+											
+										</div>
+								</div>
+							</div>
+						<br><br>
+						<div class='card' style='width:200%;'>
+								<div class='card-body'>
+									<h4 class='card-title'>Rent Details</h4>
+										<div class='card-text'>
+											<label>Monthly Rent</label>
+											<p>{{form.amount}}</p>
+											
+										</div>
+								</div>
+							</div>
+							<br><br>
+					<input  class='btn btn-primary'type='submit' value='Post Your PG'>
+				</form>
+            </div>
+		</div>
+		
+    </body>
+</html>
+{% endblock %}

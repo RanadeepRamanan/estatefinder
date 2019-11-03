@@ -1,0 +1,115 @@
+{% extends 'paying.html' %}
+{% block content %}
+
+
+<br>
+<div class='card' style='width:100%;'>
+  <div class='card-body'>
+
+          <div class='card'style='width:12%;float:right;'>
+            <div class='card-body'>
+                <button id="request-btn" class='btn btn-info'>Contact Now</button>
+                <div id=response></div>
+                
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                
+                <script type="text/javascript">
+                  $(document).ready(function(){
+                      $("#request-btn").click(function(){
+                          $.ajax({
+                             url: "/sample/{{pg.id}}/",
+                             type: "GET",
+                             dataType:"json",
+                             success: function(result){
+              
+                              $.each(result, function() {
+                                  html =  "Contact Number:" + this.mobile
+                                  $("#response").append(html)
+                              });
+                          }
+                      });
+                      });
+                  }); 
+              </script>
+            </div>
+
+          </div>   
+                <br><br>
+
+                <div class='col-5 mx-auto'>
+                    <div class='card'>
+                        <div class='card-body'>
+                            
+                          
+                            <ul class='nav' style='list-style-type: none;'>
+                                    <h4 class='card-title'>Address</h4>
+                                <li class='nav-item mt-4'>
+                                  <p>City:{{pg.city}}</p> 
+                                  <p>Location:{{pg.location}}</p>
+                                </li>
+                            </ul>
+                            <ul class='nav' style='list-style-type: none;'>
+                                <h4 class='card-title'>Property Details</h4>
+                                <li class='nav-item mt-4 ml-1'>
+                                        <p>Accomdation For:{{pg.available}}</p>
+                                        <p>Occupancy:{{pg.occupancy}}</p>
+                                        <p>Attached Balcony:{{pg.balcony}}</p>
+                                        <p> Car Parking:{{ pg.parking}}</p>
+                                       
+                                </li>
+                            </ul>
+                            <ul class='nav' style='list-style-type: none;'>
+                              <h4 class='card-title'>Meals </h4>
+                              <li class='nav-item mt-4 ml-1'>
+                                      <p>Food:{{pg.food}}</p>                
+                              </li>
+              
+                            </ul>
+
+                            <ul class='nav' style='list-style-type: none;'>
+                                    <h4 class='card-title'>Furnishing Details</h4>
+                                    <li class='nav-item mt-4 ml-1'>
+                                            <p>Available :{{pg.details}}</p>                
+                                    </li>
+                    
+                            </ul>
+                                <ul class='nav' style='list-style-type: none;'>
+                                        <h4 class='card-title'>Rent Details</h4>
+                                        <li class='nav-item mt-4 ml-1'>
+                                                <p>Monthly Rent:{{pg.amount}}</p>                
+                                        </li>
+                        
+                                   </ul>
+                                <br><br>
+                            <div class='float-right'>
+                                    <a class='btn btn-success' href="/update/{{pg.id}}/">Edit</a>
+                                    <a class='btn btn-danger' data-toggle="modal" data-target="#exampleModal" href="/delete/{{pg.id}}/">Delete</a>
+                            </div>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          Are you sure want to delete?
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                          <button type="button" class="btn btn-primary">Ok</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                            
+                        </div>
+                    </div>
+                </div>
+  </div>
+</div>               
+
+
+{% endblock %}

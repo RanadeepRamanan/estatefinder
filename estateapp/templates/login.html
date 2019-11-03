@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+    
+    {% block content %}
+                <div class='container'>
+                    <div class='col-md-4 offset-md-4'>
+                        <br>
+                        <br>
+                        <h3>Login Now</h3>
+                        <br>
+                        <form method='POST'action='/login/'>
+                            {% csrf_token %}
+                            {% for field in form %}
+                                        <p>
+                                            {{ field.label_tag }}<br>
+                                            {{ field }}
+                                            {% if field.help_text %}
+                                            <small>{{ field.help_text }}</small>
+                                            {% endif %}
+                                            {% for error in field.errors %}
+                                            <p style="color: red">{{ error }}</p>
+                                            {% endfor %}
+                                        </p>
+                            {% endfor %}
+                                        <br>
+                                        <input class='btn btn-primary' type="submit" value='Login'> &nbsp;&nbsp;
+                                    <a  href="{% url 'password_reset'%}">forget password?</a>
+                                    <br>
+                                    <br><br>
+                                    <br>
+                                    <a href='/register/'>Don't have an account?Register Here</a>
+                        </form>
+                    </div>
+                </div>
+    
+{% endblock %}
+            

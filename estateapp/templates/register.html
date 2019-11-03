@@ -1,0 +1,36 @@
+{% extends 'reg.html'%}
+
+
+
+{% block content %}
+  <div class='container'>
+        <div class='col-md-4 offset-md-4'>
+            <br>
+            
+            <h3>Register Here</h3>
+            
+            
+
+            <form method="post" action='/register/'>
+                {% csrf_token %}
+                {% for field in form %}
+                <p>
+                    {{ field.label_tag }}<br>
+                    {{ field }}
+                    {% if field.help_text %}
+                    <small>{{ field.help_text }}</small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                </p>
+                {% endfor %}
+                <br>
+                <input class='btn btn-primary' type="submit" value='Register Now'>
+                <br><br>
+                <a href='/login/'>Already have an account?Login Here</a>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,172 @@
+{% extends 'payingcontent.html'%}
+{% block content %}
+
+<nav class="navbar navbar-secondary bg-secondary" >
+    <div class="mx-auto">
+        <h3 style='color:white;'>All PG lists</h3>
+        
+    </div>
+   
+    
+   
+    <div>
+        {% if messages %}
+        <ul class='messages'>
+            {% for k in messages %}
+            <li  class='list-unstyled'style='color:red;'>{{k}}</li>
+            {% endfor %}
+        
+        </ul>
+        {% endif %}
+    </div>
+       
+    &nbsp;<a style='background:#16a085; color:white;'class="btn mr-sm-2" href="/pg/">Add PG</a>
+</nav>
+<br><br>
+{% if sr %}
+                {% for s in sr %}
+                <div class=' col-5 mx-auto'>   
+    
+                        <div class='card' style='width:150%;'>
+                            <div class='card-body'>
+                                    
+                                        
+                               <h5 class='card-title'>Paying Guest in <strong>{{s.city}} </strong>near {{s.location}}
+                                    <span class='float-right'>Rent:Rs {{s.amount}}/-</span></h5>
+                                        
+                                        <ul style='list-style-type:none;' class='nav'>
+                                            <li class='nav-item mr-4'>
+                                            
+                                                <h6>Accomodation For </h6>
+                                                <p>{{s.available}} </p>  
+                                            </li>
+                                            <li class='nav-item mr-4'>
+                                            
+                                                <h6> Occupancy</h6>
+                                                <p> {{s.occupancy}}</p>
+                                                
+                                            
+                                            </li>
+                                            <li class='nav-item mr-4'>
+                                            
+                                                <h6> Parking </h6>
+                                                <p> {{s.parking}}</p>
+                                               
+                                            
+                                            </li>
+                                            <li class='nav-item mr-4'>
+                                            
+                                                <h6>Meals Included</h6>
+                                                <p> {{s.food}}</p>
+                                               
+                                            
+                                            </li>
+                                            
+                                            </ul>
+                                            <br>
+                                            <div>
+                                                    <p>
+                                                        <a class='btn btn-primary' href="/pgview/{{s.id}}/">View Details</a>
+                                                        <span class='float-right'>Owner:{{s.user_id.username}}</span>
+                                                    </p>
+                                                
+                                            </div>
+                            </div>   
+                        </div>
+                    
+                           
+                        
+                    </div>
+                                                            
+                    
+               
+                {% endfor %}
+                {% endif %}
+
+    
+
+
+      
+
+
+{% for pg in pgobject %}
+
+
+
+
+    <!-- <table>
+            <head>
+                <tr>
+                    <th>
+                            <div class='card' style='width:200%;'>
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>Paying Guest in <strong>{{pg.city}} </strong>near {{pg.location}}
+                                        <span class='float-right'>Rent:${{pg.amount}}</span>
+                                       </h5>
+                                    </div>
+                                </div>
+                    </th>
+                </tr>
+            </head>
+            <tbody>
+               
+            </tbody>
+    </table> -->
+    
+    <br><br>
+    
+<div class=' col-5 mx-auto'>   
+    
+    <div class='card' style='width:150%;'>
+        <div class='card-body'>
+                
+                    
+           <h5 class='card-title'>Paying Guest in <strong>{{pg.city}} </strong>near {{pg.location}}
+                <span class='float-right'>Rent:Rs {{pg.amount}}/-</span></h5>
+                    
+                    <ul style='list-style-type:none;' class='nav'>
+                        <li class='nav-item mr-4'>
+                        
+                            <h6>Accomodation For </h6>
+                            <p>{{pg.available}} </p>  
+                        </li>
+                        <li class='nav-item mr-4'>
+                        
+                            <h6> Occupancy</h6>
+                            <p> {{pg.occupancy}}</p>
+                            
+                        
+                        </li>
+                        <li class='nav-item mr-4'>
+                        
+                            <h6> Parking </h6>
+                            <p> {{pg.parking}}</p>
+                           
+                        
+                        </li>
+                        <li class='nav-item mr-4'>
+                        
+                            <h6> Meals Included</h6>
+                            <p> {{pg.food}}</p>
+                           
+                        
+                        </li>
+                        
+                        </ul>
+                        <br>
+                        <div>
+                                <p>
+                                    <a class='btn btn-primary' href="/pgview/{{pg.id}}/">View Details</a>
+                                    <span class='float-right'>Owner:{{pg.user_id.username}}</span>
+                                </p>
+                            
+                        </div>
+        </div>   
+    </div>
+
+       
+    
+</div>
+{% endfor %}
+
+{% endblock %}
